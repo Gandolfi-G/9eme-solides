@@ -26,6 +26,29 @@
       </header>
 
       <main>
+        <section class="hero landing-card" data-landing-screen>
+          <p class="eyebrow">Bienvenue</p>
+          <h1>Avant de commencer</h1>
+          <p>
+            Entre ton prenom et ta classe pour demarrer ton parcours sur le chapitre.
+          </p>
+          <form class="profile-form" data-landing-form>
+            <label>
+              Prenom
+              <input id="student-name" type="text" placeholder="Ex. Lea" />
+            </label>
+            <label>
+              Classe
+              <input id="student-class" type="text" placeholder="Ex. 9R3" />
+            </label>
+            <div class="module-actions">
+              <button class="btn" type="submit">Entrer sur le site</button>
+            </div>
+          </form>
+          <p class="small muted" data-landing-feedback>Complete les deux champs pour entrer sur le site.</p>
+        </section>
+
+        <div class="landing-shell" data-home-content hidden>
         <section class="hero">
           <div class="hero-grid">
             <div>
@@ -67,23 +90,16 @@
           <article class="card">
             <div class="card-title-row">
               <div>
-                <p class="eyebrow">Profil eleve</p>
-                <h2>Ton espace local</h2>
+                <p class="eyebrow">Bienvenue</p>
+                <h2>Suivi enregistre sur cet appareil</h2>
               </div>
-              <span class="score-chip">Aucune donnee envoyee au serveur</span>
             </div>
-            <form class="profile-form">
-              <label>
-                Prenom et nom
-                <input id="student-name" type="text" placeholder="Ex. Lea Martin" />
-              </label>
-              <label>
-                Classe
-                <input id="student-class" type="text" placeholder="Ex. 9R3" />
-              </label>
-            </form>
+            <div class="retenir-box">
+              <p><strong>Prenom :</strong> <span data-student-name-display>Pas encore renseigne</span></p>
+              <p><strong>Classe :</strong> <span data-student-class-display>Pas encore renseignee</span></p>
+            </div>
             <p class="small muted">
-              Tes resultats restent dans ton navigateur. Aucun compte et aucune base de donnees ne sont necessaires.
+              Le prenom et la classe ne reapparaissent plus sous forme de formulaire apres l'entree sur le site.
             </p>
           </article>
 
@@ -209,6 +225,7 @@
             </div>
           </article>
         </section>
+        </div>
       </main>
 
       <footer class="footer-panel">

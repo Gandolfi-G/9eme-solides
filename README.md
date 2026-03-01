@@ -104,7 +104,6 @@ Si vous avez deja un depot parent :
 
 ## Donnees eleve
 
-- Aucune donnee n'est envoyee vers un serveur.
 - La progression est gardee dans `localStorage`.
 
 ## Calendrier des modules

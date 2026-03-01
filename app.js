@@ -190,22 +190,68 @@ function setStudentProfile() {
   const state = getState();
   const nameField = document.querySelector("#student-name");
   const classField = document.querySelector("#student-class");
+  const nameDisplay = document.querySelector("[data-student-name-display]");
+  const classDisplay = document.querySelector("[data-student-class-display]");
 
   if (nameField) {
     nameField.value = state.student.name;
-    nameField.addEventListener("input", () => {
-      state.student.name = nameField.value.trim();
-      saveState(state);
-    });
   }
 
   if (classField) {
     classField.value = state.student.className;
-    classField.addEventListener("input", () => {
-      state.student.className = classField.value.trim();
-      saveState(state);
-    });
   }
+
+  if (nameDisplay) {
+    nameDisplay.textContent = state.student.name || "Pas encore renseigne";
+  }
+
+  if (classDisplay) {
+    classDisplay.textContent = state.student.className || "Pas encore renseignee";
+  }
+}
+
+function hasStudentProfile() {
+  const state = getState();
+  return Boolean(state.student.name && state.student.className);
+}
+
+function updateLandingUI() {
+  if (document.body.dataset.page !== "home") return;
+  const landingScreen = document.querySelector("[data-landing-screen]");
+  const homeContent = document.querySelector("[data-home-content]");
+  if (!landingScreen || !homeContent) return;
+  const ready = hasStudentProfile();
+  landingScreen.hidden = ready;
+  homeContent.hidden = !ready;
+}
+
+function setupLandingForm() {
+  if (document.body.dataset.page !== "home") return;
+  const form = document.querySelector("[data-landing-form]");
+  const feedback = document.querySelector("[data-landing-feedback]");
+  if (!form) return;
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const nameField = form.querySelector("#student-name");
+    const classField = form.querySelector("#student-class");
+    const name = nameField?.value.trim() || "";
+    const className = classField?.value.trim() || "";
+
+    if (!name || !className) {
+      if (feedback) {
+        feedback.textContent = "Merci d'indiquer ton prenom et ta classe.";
+      }
+      return;
+    }
+
+    const state = getState();
+    state.student.name = name;
+    state.student.className = className;
+    saveState(state);
+    setStudentProfile();
+    updateLandingUI();
+  });
 }
 
 function updateProgressUI() {
@@ -562,6 +608,8 @@ document.addEventListener("DOMContentLoaded", () => {
   getState();
   const adminReady = setupAdminGate();
   setStudentProfile();
+  setupLandingForm();
+  updateLandingUI();
   populateSchedule();
   guardLockedModuleAccess();
   setHomeworkToggle();

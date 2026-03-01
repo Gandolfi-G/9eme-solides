@@ -496,6 +496,16 @@ main section {
   display: none !important;
 }
 
+.landing-shell {
+  display: grid;
+  gap: 1rem;
+}
+
+.landing-card {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .admin-lock {
   max-width: 680px;
   margin: 2rem auto 0;
