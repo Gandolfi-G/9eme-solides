@@ -6,7 +6,7 @@ window.SOLIDES_CONFIG = {
     "03-patrons": "2026-03-03",
     "04-volume": "2026-03-04",
     "05-prismes": "2026-03-05",
-    "evaluation": "2026-03-06"
+    "evaluation": "2026-03-05"
   },
   "moduleLabels": {
     "01-vocabulaire": "Module 1 : Vocabulaire des solides",
